@@ -7,19 +7,19 @@
 :root {
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-yellow: #fdc760;
 
     --unit-100vh: 100vh;
-    //--unit-gap: 40px;
+    --unit-gap: 50px;
 
-    --font-primary: sans-serif;
-    //--font-secondary: serif;
+    --font-primary: "RM Neue", sans-serif;
 
     --easing-authentic-motion: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 // Breakpoints
-// @media #{$lt-tablet} {
-//     :root {
-//         --unit-gap: 20px;
-//     }
-// }
+@media #{$lt-phone} {
+    :root {
+        --unit-gap: 20px;
+    }
+}
