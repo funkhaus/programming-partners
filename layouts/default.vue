@@ -3,16 +3,11 @@
         <!-- This helps with SEO -->
         <wp-seo />
 
-        <site-hamburger />
+        <!-- MakeMake logo goes here -->
 
-        <nuxt-link
-            to="/"
-            class="logo"
-        >
-            <svg-logo-funkhaus class="svg" />
-        </nuxt-link>
+        <!-- Breadcrumb will go here -->
 
-        <wp-menu name="Main Menu" />
+        <!-- Hamburger goes here -->
 
         <nuxt
             keep-alive
@@ -27,15 +22,8 @@ import _throttle from "lodash/throttle"
 import _kebabCase from "lodash/kebabCase"
 import { decodeHtmlEntities } from "~/utils/tools"
 
-// Components
-import siteHamburger from "~/components/global/Hamburger"
-import svgLogoFunkhaus from "~/assets/svg/logo-funkhaus.svg"
-
 export default {
-    components: {
-        siteHamburger,
-        svgLogoFunkhaus,
-    },
+    components: {},
     data() {
         let output = {
             winHeight: 0,
@@ -196,14 +184,5 @@ export default {
 
 <style lang="scss">
 .layout-default {
-    .logo {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 200px;
-        text-align: center;
-    }
 }
 </style>
