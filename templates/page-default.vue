@@ -4,7 +4,6 @@
         :class="classes"
     >
         <!-- Home page components will go here -->
-        <p>Testing</p>
     </section>
 </template>
 
@@ -34,10 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 .page-home {
-    margin: 0 auto;
-    min-height: var(--unit-100vh);
-    text-align: center;
-
     // Hover states
     // @media #{$has-hover} {
     // Hover styles would go here
