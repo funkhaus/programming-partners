@@ -3,16 +3,16 @@
         to="/"
         class="global-logo"
     >
-        <svg-logo-funkhaus class="svg" />
+        <svg-logo-makemake class="svg" />
     </nuxt-link>
 </template>
 
 <script>
-import SvgLogoFunkhaus from "~/assets/svg/logo-funkhaus"
+import SvgLogoMakemake from "~/assets/svg/logo-makemake"
 
 export default {
     components: {
-        SvgLogoFunkhaus,
+        SvgLogoMakemake,
     },
 }
 </script>
