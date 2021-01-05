@@ -1,5 +1,5 @@
 import WpMenu from "~/components/WpMenu"
-import { data as API } from "~/stories/mock-api.json"
+import { data } from "~/stories/mock-api.json"
 
 export default {
     title: "WpComponents / WpMenu",
