@@ -1,5 +1,5 @@
 import ShortcodeGallery from "~/components/shortcode/Gallery"
-import { data } from "~/stories/mock-api.json"
+import { data as API } from "~/stories/mock-api.json"
 
 export default {
     title: "WpComponents / ShortcodeGallery",
