@@ -8,7 +8,7 @@ export default {
 export const Default = () => ({
     data() {
         return {
-            images: data.images.nodes,
+            images: API.images.nodes,
         }
     },
     components: { ShortcodeGallery },
