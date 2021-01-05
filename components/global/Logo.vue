@@ -22,7 +22,7 @@ export default {
     .svg {
         height: 20px;
         width: auto;
-        transition: height 0.4s ease-in-out;
+        transition: height 0.4s var(--easing-authentic-motion);
     }
     path {
         fill: var(--color-yellow);
