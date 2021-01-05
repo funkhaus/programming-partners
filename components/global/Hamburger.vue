@@ -52,7 +52,7 @@ export default {
     .logo {
         height: auto;
         max-width: 150px;
-        transition: height 0.4s var(--easing-authentic-motion);
+        transition: width 0.4s var(--easing-authentic-motion);
     }
 
     .lines {
