@@ -1,5 +1,5 @@
 import ShortcodeGallery from "~/components/shortcode/Gallery"
-import { data } from "~/stories/mock-api.json"
+import { data as API } from "~/stories/mock-api.json"
 
 export default {
     title: "WpComponents / ShortcodeGallery",
@@ -8,7 +8,7 @@ export default {
 export const Default = () => ({
     data() {
         return {
-            images: data.images.nodes,
+            images: API.images.nodes,
         }
     },
     components: { ShortcodeGallery },
