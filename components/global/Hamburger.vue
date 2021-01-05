@@ -42,7 +42,7 @@ export default {
     cursor: pointer;
     position: relative;
     z-index: 10;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s var(--easing-authentic-motion);
 
     .line {
         height: 2px;
@@ -51,7 +51,7 @@ export default {
         position: absolute;
         left: 20px;
         transform-origin: center right;
-        transition: all 0.4s ease-in-out;
+        transition: all 0.4s var(--easing-authentic-motion);
         z-index: 10;
     }
     .line-1 {
