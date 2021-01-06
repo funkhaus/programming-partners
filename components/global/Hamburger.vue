@@ -1,11 +1,11 @@
 <template>
-    <div
-        :class="classes"
-        @click="toggleMenu()"
-    >
+    <div :class="classes">
         <slot />
 
-        <div class="lines">
+        <div
+            class="lines"
+            @click="toggleMenu()"
+        >
             <div class="line line-1" />
             <div class="line line-2" />
         </div>
@@ -28,11 +28,7 @@ export default {
     methods: {
         toggleMenu() {
             // Toggle menu state
-            if (this.isOpened) {
-                this.$emit("menu-opened", false)
-            } else {
-                this.$emit("menu-opened", true)
-            }
+            this.$emit("menu-opened", !this.isOpened)
         },
     },
 }
