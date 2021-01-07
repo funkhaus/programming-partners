@@ -39,10 +39,7 @@ export default {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-
     cursor: pointer;
-    z-index: 10;
-    transition: opacity 0.4s var(--easing-authentic-motion);
 
     // Styles for slot
     .logo {
@@ -63,7 +60,7 @@ export default {
             background-color: var(--color-yellow);
             position: absolute;
             transform-origin: center right;
-            transition: all 0.4s var(--easing-authentic-motion);
+            transition: transform 0.4s var(--easing-authentic-motion);
             z-index: 10;
         }
         .line-1 {
