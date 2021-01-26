@@ -11,49 +11,53 @@
                     class="director"
                     @mouseenter="mouseEnter(director.featuredImage.node)"
                     @mouseleave="mouseLeave()"
-                    >
+                >
                     <nuxt-link :to="director.uri">
-                        {{director.title}}
+                        {{ director.title }}
                     </nuxt-link>
                 </div>
-                 <wp-image mode="fullbleed" :src="hoverImg" :srcSet="hoverImgSet" :class="visible"/>
+                <wp-image
+                    mode="fullbleed"
+                    :src="hoverImg"
+                    :src-set="hoverImgSet"
+                    :class="visible"
+                />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
+    props: {
+        items: {
+            // The list of talent. Can use mock API `directors` for these. Use the `featuredImage` for hover.
+            type: Array,
+            default: () => [],
+        },
+    },
     data() {
         return {
             hoverImg: null,
             hoverImgSet: null,
-            visible: 'hidden'
-        }
-    },
-    props: {
-        items: {
-        // The list of talent. Can use mock API `directors` for these. Use the `featuredImage` for hover.
-        type: Array,
-        default: () => []
+            visible: "hidden",
         }
     },
     methods: {
-        mouseEnter(image){
+        mouseEnter(image) {
             console.log("Enter")
             console.log(image)
             this.hoverImg = image.sourceUrl
             this.hoverImgSet = image.srcSet
-            this.visible = 'show'
+            this.visible = "show"
         },
-        mouseLeave(){
+        mouseLeave() {
             console.log("leave")
             this.hoverImg = null
             this.hoverImgSet = null
-            this.visible = 'hidden'
-        }
-    }
+            this.visible = "hidden"
+        },
+    },
 }
 </script>
 
@@ -65,23 +69,23 @@ export default {
     min-height: var(--unit-100vh);
     z-index: 0;
 
-    .gallery-header{
+    .gallery-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+
         > div,
-        > a{
+        > a {
             width: auto;
         }
-        .global-hamburger{
-            align-self:flex-end;
+        .global-hamburger {
+            align-self: flex-end;
         }
     }
-    .directors-container{
+    .directors-container {
         display: flex;
         align-items: center;
-        min-height:calc(var(--unit-100vh) - 60px);
+        min-height: calc(var(--unit-100vh) - 60px);
         z-index: 10;
         .directors {
             width: 100%;
@@ -89,8 +93,8 @@ export default {
             grid-template-columns: auto auto 25%;
             grid-column-gap: var(--unit-gap);
             grid-row-gap: var(--unit-gap);
-            
-            .director{
+
+            .director {
                 position: relative;
                 z-index: 20;
                 a {
@@ -100,7 +104,7 @@ export default {
                     color: var(--color-white);
                 }
             }
-            
+
             .wp-image {
                 position: absolute;
                 top: 50%;
@@ -110,10 +114,10 @@ export default {
                 height: 80vh;
                 z-index: 10;
             }
-            .hidden{
+            .hidden {
                 opacity: 0;
             }
-            .show{
+            .show {
                 opacity: 1;
             }
         }
@@ -124,9 +128,6 @@ export default {
                 grid-template-columns: 100%;
             }
         }
-
     }
-        
-
 }
 </style>
