@@ -1,13 +1,9 @@
 <template lang="html">
     <div class="gallery-list">
-        <div class="gallery-header">
-            <slot />
-        </div>
         <div class="directors-container">
             <div class="directors">
                 <div
-                    v-for="(director, i) in items"
-                    :key="i"
+                    v-for="director in items"
                     class="director"
                     @mouseenter="mouseEnter(director.featuredImage.node)"
                     @mouseleave="mouseLeave()"
@@ -18,8 +14,7 @@
                 </div>
                 <wp-image
                     mode="fullbleed"
-                    :src="hoverImg"
-                    :src-set="hoverImgSet"
+                    :image="hoverImg"
                     :class="visible"
                 />
             </div>
@@ -39,20 +34,15 @@ export default {
     data() {
         return {
             hoverImg: null,
-            hoverImgSet: null,
             visible: "hidden",
         }
     },
     methods: {
         mouseEnter(image) {
-            console.log("Enter")
-            console.log(image)
-            this.hoverImg = image.sourceUrl
-            this.hoverImgSet = image.srcSet
+            this.hoverImg = image
             this.visible = "show"
         },
         mouseLeave() {
-            console.log("leave")
             this.hoverImg = null
             this.hoverImgSet = null
             this.visible = "hidden"
@@ -69,19 +59,6 @@ export default {
     min-height: var(--unit-100vh);
     z-index: 0;
 
-    .gallery-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        > div,
-        > a {
-            width: auto;
-        }
-        .global-hamburger {
-            align-self: flex-end;
-        }
-    }
     .directors-container {
         display: flex;
         align-items: center;
@@ -90,13 +67,15 @@ export default {
         .directors {
             width: 100%;
             display: grid;
-            grid-template-columns: auto auto 25%;
+            grid-template-columns: auto auto 20%;
             grid-column-gap: var(--unit-gap);
-            grid-row-gap: var(--unit-gap);
 
             .director {
                 position: relative;
                 z-index: 20;
+                font-size: 24px;
+                font-family: var(--font-primary);
+                padding: 0 0 37px;
                 a {
                     color: var(--color-yellow);
                 }
@@ -110,7 +89,7 @@ export default {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 80% !important;
+                width: 80%;
                 height: 80vh;
                 z-index: 10;
             }
@@ -126,6 +105,7 @@ export default {
             .directors {
                 display: grid;
                 grid-template-columns: 100%;
+                text-align: center;
             }
         }
     }
