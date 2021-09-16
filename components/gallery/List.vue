@@ -103,6 +103,7 @@ export default {
     },
     methods: {
         videoLoaded() {
+            console.log(this.videoLoaded)
             this.isVideoLoaded = true
         },
         imageError() {
