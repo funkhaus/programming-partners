@@ -1,6 +1,7 @@
 import GlobalHamburger from "~/components/global/Hamburger"
 import LogoRockPaperScissors from "~/assets/svg/logo-rock-paper-scissors"
-import LogoFunkhaus from "~/assets/svg/logo-funkhaus"
+// TODO: Ask about missing logo
+// import LogoFunkhaus from "~/assets/svg/logo-funkhaus"
 
 export default {
     title: "ProgrammingPartners / GlobalHamburger",
