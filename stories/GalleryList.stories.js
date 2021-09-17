@@ -1,6 +1,6 @@
 import GalleryList from "~/components/gallery/List"
 import WpImage from "~/components/WpImage"
-import { data as API_IMAGE_404 } from "~/stories/mock-api-error.json"
+import { data as API_ERRORS } from "~/stories/mock-api-error.json"
 import { data as API } from "~/stories/mock-api.json"
 
 export default {
@@ -21,10 +21,10 @@ export const Default = () => ({
         <gallery-list :items="items"/>`,
 })
 
-export const Image404 = () => ({
+export const ListWithErrors = () => ({
     data() {
         return {
-            items: API_IMAGE_404.directors.children.nodes,
+            items: API_ERRORS.directors.children.nodes,
         }
     },
     components: {

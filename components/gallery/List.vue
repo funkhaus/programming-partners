@@ -18,7 +18,7 @@
                                 @mouseout="mouseOut()"
                                 @mouseover="mouseOver(item)"
                             >
-                                <h3 class="title">
+                                <h3 class="item-title">
                                     <nuxt-link
                                         :to="item.uri"
                                         class="link"
@@ -45,7 +45,9 @@
                 :class="imageClasses"
                 :image="image"
                 mode="fullbleed"
+                @error-video="videoError"
                 @error-image="imageError"
+                @loaded-image="imageLoaded"
                 @loaded-video="videoLoaded"
             />
         </transition>
@@ -64,19 +66,23 @@ export default {
     },
     data() {
         return {
-            image: null,
-            isImageError: false,
+            isImageLoaded: false,
             isVideoLoaded: false,
-            caption: ''
+            isImageError: false,
+            isVideoError: false,
+            caption: '',
+            image: null
         }
     },
     computed: {
         imageClasses() {
             return [
                 {
-                    'img-has-error': this.isImageError,
+                    'media-loaded': this.isImageLoaded || this.isVideoLoaded,
+                    'media-has-full-error': this.isVideoError && this.isImageError && !this.isImageLoaded && !this.isVideoLoaded,
                 }
             ]
+
         },
         preparedList() {
             let tempData = this.items
@@ -103,14 +109,29 @@ export default {
     },
     methods: {
         videoLoaded() {
-            console.log(this.videoLoaded)
             this.isVideoLoaded = true
         },
+        imageLoaded() {
+            this.isImageLoaded = true
+        },
+        videoError() {
+            this.isVideoError = true
+        },
         imageError() {
-            // if @error-image event is fired check if video is loaded. if not proceed to show caption.
-            if (!this.isVideoLoaded) {
-                this.isImageError = true
-            }
+            this.isImageError = true
+        },
+
+        mouseOver(item) {
+            this.caption = item.title
+            this.image = item.featuredImage.node
+        },
+        mouseOut() {
+            this.isVideoLoaded = false
+            this.isImageLoaded = false
+            this.isVideoError = false
+            this.isImageError = false
+            this.caption = ''
+            this.image = null
         },
         shapeListData(array, offset) {
             let count = array.length
@@ -122,16 +143,6 @@ export default {
                 left: leftArray,
                 right: rightArray
             }
-        },
-        mouseOver(item) {
-            this.image = item.featuredImage.node
-            this.caption = item.title
-        },
-        mouseOut() {
-            this.isVideoLoaded = false
-            this.isImageError = false
-            this.caption = ''
-            this.image = null
         },
     }
 
@@ -189,7 +200,7 @@ export default {
         }
     }
 
-    .title {
+    .item-title {
         font-size: 24px;
         margin: 0;
     }
@@ -211,11 +222,20 @@ export default {
         overflow: hidden;
         box-sizing: border-box;
 
-        &.img-has-error {
+        &.media-loaded {
+            // don't hide media if video has 404 but item still has an image
+            /deep/ .media {
+                opacity: 1;
+            }
+        }
+
+        &.media-has-full-error {
+            // hide the sizer so the broken image icon isn't visible on 404 images
             /deep/ .sizer {
-                visibility: hidden; // hide the sizer so the broken image icon isn't visible on 404 images
+                visibility: hidden;
             }
 
+            // display the caption
             /deep/ .caption {
                 opacity: 1;
             }
@@ -228,6 +248,7 @@ export default {
         height: 100%;
         opacity: 0;
         transition: opacity .4s ease-in-out;
+        transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
         padding-top: 4%;
         background: #CD1A45;
         text-align: center;
