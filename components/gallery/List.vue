@@ -39,8 +39,8 @@
         >
             <wp-image
                 v-if="image"
-                :key="image.databaseId"
-                :alt="caption"
+                :key="image.id"
+                :alt="image.altText"
                 :caption="`Who the fuxt is ${caption}?`"
                 :class="imageClasses"
                 :image="image"

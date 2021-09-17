@@ -14,7 +14,10 @@ export const Default = () => ({
         }
     },
     components: { GlobalHamburger, LogoRockPaperScissors },
-    template: `<global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'><logo-rock-paper-scissors class="logo" /></global-hamburger>`,
+    template: `
+        <global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'>
+        <logo-rock-paper-scissors class="logo"/>
+        </global-hamburger>`,
     methods: {
         toggleMenu(event) {
             this.isOpened = event // used for example
@@ -29,7 +32,10 @@ export const AlternateLogo = () => ({
         }
     },
     components: { GlobalHamburger, LogoFunkhaus },
-    template: `<global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'><logo-funkhaus class="logo" /></global-hamburger>`,
+    template: `
+        <global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'>
+        <logo-funkhaus class="logo"/>
+        </global-hamburger>`,
     methods: {
         toggleMenu(event) {
             this.isOpened = event // used for example
@@ -44,7 +50,8 @@ export const NoLogo = () => ({
         }
     },
     components: { GlobalHamburger },
-    template: `<global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'/>`,
+    template: `
+        <global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'/>`,
     methods: {
         toggleMenu(event) {
             this.isOpened = event // used for example
