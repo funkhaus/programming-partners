@@ -155,21 +155,24 @@ export default {
 .gallery-list {
     position: relative;
     z-index: 0;
+
+    max-width: 1280px;
+    min-height: var(--unit-100vh);
+    margin: 0 auto;
+    padding: 0 var(--unit-gap);
     box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: var(--unit-100vh);
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 var(--unit-gap);
+
     font-family: var(--font-primary);
 
     .list {
-        list-style: none;
-        padding: 0;
         margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
     .list-main {
