@@ -54,7 +54,9 @@
     </div>
 </template>
 <script>
-import _ from 'lodash'
+
+import _dropRight from "lodash/dropRight"
+import _takeRight from "lodash/takeRight"
 import WpImage from '~/components/WpImage'
 
 export default {
@@ -140,8 +142,8 @@ export default {
         shapeListData(array, offset) {
             let count = array.length
             let trimLastCount = Math.floor(count / offset)
-            let rightArray = _.takeRight(array, trimLastCount)
-            let leftArray = _.dropRight(array, trimLastCount)
+            let rightArray = _takeRight(array, trimLastCount)
+            let leftArray = _dropRight(array, trimLastCount)
 
             return {
                 left: leftArray,
