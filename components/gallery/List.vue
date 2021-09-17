@@ -54,10 +54,14 @@
     </div>
 </template>
 <script>
-import _ from "lodash"
+import _ from 'lodash'
+import WpImage from '~/components/WpImage'
 
 export default {
     name: "List",
+    components: {
+        WpImage,
+    },
     props: {
         items: {
             type: Array,
