@@ -178,13 +178,15 @@ export default {
     .list-main {
         position: relative;
         z-index: 20;
-        display: flex;
-        justify-content: space-between;
+
         max-width: 1180px;
         width: 100%;
         height: 100%;
         box-sizing: border-box;
         margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
     }
 
     .item-main {
@@ -204,24 +206,20 @@ export default {
     }
 
     .item-title {
-        font-size: 24px;
         margin: 0;
-    }
 
-    .link {
-        display: block;
-        padding: 17px 0;
-        color: var(--color-yellow);
+        font-size: 24px;
     }
 
     .wp-image {
         position: absolute;
         z-index: 10;
+
         max-width: 960px;
         width: 100%;
         max-height: 540px;
-        margin: auto;
         height: 100%;
+        margin: auto;
         overflow: hidden;
         box-sizing: border-box;
 
@@ -245,17 +243,12 @@ export default {
         }
     }
 
-    /deep/ .caption {
+    .link {
+        padding: 17px 0;
+
         display: block;
-        position: relative;
-        height: 100%;
-        opacity: 0;
-        transition: opacity .4s ease-in-out;
-        transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
-        padding-top: 4%;
-        background: #CD1A45;
-        text-align: center;
-        font-size: 40px;
+
+        color: var(--color-yellow);
     }
 
 
@@ -265,6 +258,22 @@ export default {
                 color: var(--color-white);
             }
         }
+        /deep/ .caption {
+            position: relative;
+
+            height: 100%;
+            padding-top: 4%;
+
+            display: block;
+
+            background: #CD1A45;
+            text-align: center;
+            font-size: 40px;
+            opacity: 0;
+
+            transition: opacity .4s ease-in-out;
+            transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
+        }
     }
 
     @media #{$lt-phone} {
@@ -273,6 +282,7 @@ export default {
         }
         .list-main {
             display: block;
+
             text-align: center;
         }
         .item-main {
