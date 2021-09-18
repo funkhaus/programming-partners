@@ -157,6 +157,13 @@ export default {
 
 
 <style lang="scss" scoped>
+@font-face {
+    font-family: 'RM Neue';
+    src: url('../../assets/fonts/RMNeue-Regular.woff2') format('woff2'),
+    url('../../assets/fonts/RMNeue-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .gallery-list {
     position: relative;
