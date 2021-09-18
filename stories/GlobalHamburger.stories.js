@@ -1,7 +1,5 @@
 import GlobalHamburger from "~/components/global/Hamburger"
 import LogoRockPaperScissors from "~/assets/svg/logo-rock-paper-scissors"
-// TODO: Ask about missing logo
-// import LogoFunkhaus from "~/assets/svg/logo-funkhaus"
 
 export default {
     title: "ProgrammingPartners / GlobalHamburger",
@@ -31,7 +29,7 @@ export const AlternateLogo = () => ({
             isOpened: false,
         }
     },
-    components: { GlobalHamburger, LogoFunkhaus },
+    components: { GlobalHamburger },
     template: `
         <global-hamburger :is-opened="isOpened" @menu-opened='toggleMenu'>
         <logo-funkhaus class="logo"/>
