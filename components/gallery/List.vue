@@ -237,6 +237,8 @@ export default {
         }
 
         &.media-has-full-error {
+            // set overflow to visible in case the item name is long
+            overflow: visible;
             // hide the sizer so the broken image icon isn't visible on 404 images
             /deep/ .sizer {
                 visibility: hidden;
@@ -248,6 +250,26 @@ export default {
             }
         }
     }
+
+    /deep/ .caption {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        background: #111111;
+        text-align: right;
+        font-size: 8vw;
+        line-height: 1;
+        text-transform: uppercase;
+        color: white;
+        opacity: 0;
+
+        transition: opacity .4s ease-in-out;
+        transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
+    }
+
 
     .link {
         padding: 17px 0;
@@ -263,22 +285,6 @@ export default {
             &:hover {
                 color: var(--color-white);
             }
-        }
-        /deep/ .caption {
-            position: relative;
-
-            height: 100%;
-            padding-top: 4%;
-
-            display: block;
-
-            background: #CD1A45;
-            text-align: center;
-            font-size: 40px;
-            opacity: 0;
-
-            transition: opacity .4s ease-in-out;
-            transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
         }
     }
 
