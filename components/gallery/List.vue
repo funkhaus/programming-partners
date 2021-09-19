@@ -1,5 +1,5 @@
 <template>
-    <div class="list gallery-list">
+    <div class="gallery-list">
         <ul class="list list-main">
             <li
                 v-for="(main) in preparedList"
