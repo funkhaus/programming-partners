@@ -155,7 +155,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+// import font at the component level because it doesn't appear to be loaded globally
 @font-face {
     font-family: 'RM Neue';
     src: url('../../assets/fonts/RMNeue-Regular.woff2') format('woff2'),
