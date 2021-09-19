@@ -126,7 +126,7 @@ export default {
         },
 
         mouseOver(item) {
-            this.caption = item.featuredImage.node.caption !== '' ? item.featuredImage.node.caption : `Who the fuxt is ${item.title}?`
+            this.caption = item.featuredImage.node.caption !== null ? item.featuredImage.node.caption : `Who the fuxt is ${item.title}?`
             this.image = item.featuredImage.node
         },
         mouseOut() {
