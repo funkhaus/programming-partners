@@ -84,8 +84,8 @@ export default {
         imageClasses() {
             return [
                 {
-                    'media-loaded': this.isImageLoaded || this.isVideoLoaded,
-                    'media-has-full-error': this.isVideoError && this.isImageError && !this.isImageLoaded && !this.isVideoLoaded,
+                    'has-loaded-media': this.isImageLoaded || this.isVideoLoaded,
+                    'has-full-media-error': this.isVideoError && this.isImageError && !this.isImageLoaded && !this.isVideoLoaded,
                 }
             ]
 
@@ -157,6 +157,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 @font-face {
     font-family: 'RM Neue';
     src: url('../../assets/fonts/RMNeue-Regular.woff2') format('woff2'),
@@ -236,14 +237,14 @@ export default {
         overflow: hidden;
         box-sizing: border-box;
 
-        &.media-loaded {
+        &.has-loaded-media {
             // don't hide media if video has 404 but item still has an image
             /deep/ .media {
                 opacity: 1;
             }
         }
 
-        &.media-has-full-error {
+        &.has-full-media-error {
             // set overflow to visible in case the item name is long
             overflow: visible;
             // hide the sizer so the broken image icon isn't visible on 404 images
@@ -296,9 +297,6 @@ export default {
     }
 
     @media #{$lt-phone} {
-        .image-frame {
-            padding: 0 var(--unit-gap);
-        }
         .list-main {
             display: block;
 
@@ -312,6 +310,9 @@ export default {
                     display: block;
                 }
             }
+        }
+        /deep/ .caption {
+            font-size: 20vw;
         }
     }
 }
