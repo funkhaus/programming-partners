@@ -55,13 +55,9 @@
 
 import _dropRight from "lodash/dropRight"
 import _takeRight from "lodash/takeRight"
-import WpImage from '~/components/WpImage'
 
 export default {
     name: "List",
-    components: {
-        WpImage,
-    },
     props: {
         items: {
             type: Array,
