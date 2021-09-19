@@ -39,7 +39,7 @@
                 v-if="image"
                 :key="image.id"
                 :alt="image.altText"
-                :caption="`Who the fuxt is ${caption}?`"
+                :caption="caption"
                 :class="imageClasses"
                 :image="image"
                 mode="fullbleed"
@@ -126,7 +126,7 @@ export default {
         },
 
         mouseOver(item) {
-            this.caption = item.title
+            this.caption = item.featuredImage.node.caption !== '' ? item.featuredImage.node.caption : `Who the fuxt is ${item.title}?`
             this.image = item.featuredImage.node
         },
         mouseOut() {

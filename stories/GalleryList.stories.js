@@ -33,6 +33,7 @@ export const ListWithErrors = () => ({
                             sourceUrl: "404.jpg",
                             id: "cG9zdDo2NQ==",
                             altText: "",
+                            caption: "",
                             acfImageMeta: {
                                 videoUrl: "404.mp4",
                             },
