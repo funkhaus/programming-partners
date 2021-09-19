@@ -263,7 +263,7 @@ export default {
         flex-direction: column;
         justify-content: center;
 
-        background: #111111;
+        background: #212121;
         text-align: right;
         font-size: 8vw;
         line-height: 1;
