@@ -5,31 +5,27 @@
                 v-for="(main) in preparedList"
                 class="item-main"
             >
-                <ul class="list list-sub">
+                <ul
+                    v-for="(list) in main"
+                    class="list"
+                >
                     <li
-                        v-for="(list) in main"
+                        v-for="item in list.listItems"
+                        :key="item.id"
                         class="item"
                     >
-                        <ul class="list">
-                            <li
-                                v-for="item in list.listItems"
-                                :key="item.id"
-                                class="item"
+                        <h3
+                            class="item-title"
+                            @mouseout="mouseOut()"
+                            @mouseover="mouseOver(item)"
+                        >
+                            <nuxt-link
+                                :to="item.uri"
+                                class="link"
                             >
-                                <h3
-                                    class="item-title"
-                                    @mouseout="mouseOut()"
-                                    @mouseover="mouseOver(item)"
-                                >
-                                    <nuxt-link
-                                        :to="item.uri"
-                                        class="link"
-                                    >
-                                        {{ item.title }}
-                                    </nuxt-link>
-                                </h3>
-                            </li>
-                        </ul>
+                                {{ item.title }}
+                            </nuxt-link>
+                        </h3>
                     </li>
                 </ul>
             </li>
@@ -212,18 +208,12 @@ export default {
             flex: 1 1 63%;
             display: flex;
             justify-content: space-between;
-
-            .list-sub {
-                display: flex;
-                justify-content: space-between;
-                flex-grow: 1;
-            }
         }
     }
 
     .item-title {
         display: inline-block;
-        
+
         margin: 0;
     }
 
@@ -307,10 +297,6 @@ export default {
         .item-main {
             &:last-child {
                 display: block;
-
-                .list-sub {
-                    display: block;
-                }
             }
         }
         /deep/ .caption {
