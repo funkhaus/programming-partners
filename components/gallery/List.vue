@@ -15,10 +15,12 @@
                                 v-for="item in list.listItems"
                                 :key="item.id"
                                 class="item"
-                                @mouseout="mouseOut()"
-                                @mouseover="mouseOver(item)"
                             >
-                                <h3 class="item-title">
+                                <h3
+                                    class="item-title"
+                                    @mouseout="mouseOut()"
+                                    @mouseover="mouseOver(item)"
+                                >
                                     <nuxt-link
                                         :to="item.uri"
                                         class="link"
@@ -220,6 +222,8 @@ export default {
     }
 
     .item-title {
+        display: inline-block;
+        
         margin: 0;
     }
 
