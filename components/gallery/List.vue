@@ -221,8 +221,15 @@ export default {
 
     .item-title {
         margin: 0;
+    }
+
+    .link {
+        padding: 17px 0;
+
+        display: block;
 
         font-size: 24px;
+        color: var(--color-yellow);
     }
 
     .wp-image {
@@ -271,20 +278,11 @@ export default {
         font-size: 8vw;
         line-height: 1;
         text-transform: uppercase;
-        color: white;
+        color: #FFFFFFFF;
         opacity: 0;
 
         transition: opacity .4s ease-in-out;
         transition-delay: .4s; // add slight delay so you don't see a flash of the caption on items that have image 404s but still have videos
-    }
-
-
-    .link {
-        padding: 17px 0;
-
-        display: block;
-
-        color: var(--color-yellow);
     }
 
 
