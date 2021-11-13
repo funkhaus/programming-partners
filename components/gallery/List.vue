@@ -1,35 +1,30 @@
 <template>
     <div class="gallery-list">
-        <ul class="list list-main">
-            <li
+        <nav class="list-main">
+            <ul
                 v-for="(main) in preparedList"
-                class="item-main"
+                class="list"
             >
-                <ul
-                    v-for="(list) in main"
-                    class="list"
+                <li
+                    v-for="(item) in main.listItems"
+                    :key="item.id"
+                    class="item"
                 >
-                    <li
-                        v-for="item in list.listItems"
-                        :key="item.id"
-                        class="item"
+                    <h3
+                        class="item-title"
+                        @mouseout="mouseOut()"
+                        @mouseover="mouseOver(item)"
                     >
-                        <h3
-                            class="item-title"
-                            @mouseout="mouseOut()"
-                            @mouseover="mouseOver(item)"
+                        <nuxt-link
+                            :to="item.uri"
+                            class="link"
                         >
-                            <nuxt-link
-                                :to="item.uri"
-                                class="link"
-                            >
-                                {{ item.title }}
-                            </nuxt-link>
-                        </h3>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                            {{ item.title }}
+                        </nuxt-link>
+                    </h3>
+                </li>
+            </ul>
+        </nav>
 
         <transition
             mode="out-in"
@@ -90,22 +85,18 @@ export default {
             let trimmed = this.shapeListData(left, 2)
 
             return [
-                [
-                    {
-                        listItems: trimmed.left
-                    },
-                ],
-                [
-                    {
-                        listItems: trimmed.right
-                    },
-                    {
-                        listItems: right
-                    }
-                ]
-
+                {
+                    listItems: trimmed.left
+                },
+                {
+                    listItems: trimmed.right
+                },
+                {
+                    listItems: right
+                }
             ]
         },
+
     },
     methods: {
         videoLoaded() {
@@ -197,15 +188,6 @@ export default {
         justify-content: space-between;
     }
 
-    .item-main {
-        flex: 1 1 37%;
-
-        &:last-child {
-            flex: 1 1 63%;
-            display: flex;
-            justify-content: space-between;
-        }
-    }
 
     .item-title {
         display: inline-block;
