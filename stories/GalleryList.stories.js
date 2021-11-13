@@ -14,7 +14,6 @@ export const Default = () => ({
     },
     components: {
         GalleryList,
-        WpImage,
     },
     template: `
         <gallery-list :items="items"/>`,
@@ -99,7 +98,6 @@ export const ListWithErrors = () => ({
     },
     components: {
         GalleryList,
-        WpImage,
     },
     template: `
         <gallery-list :items="items"/>`,
