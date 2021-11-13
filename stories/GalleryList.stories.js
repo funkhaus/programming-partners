@@ -1,5 +1,4 @@
 import GalleryList from "~/components/gallery/List"
-import WpImage from "~/components/WpImage"
 import { data as API } from "~/stories/mock-api.json"
 
 export default {
