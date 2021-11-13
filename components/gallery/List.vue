@@ -272,11 +272,7 @@ export default {
 
             text-align: center;
         }
-        .item-main {
-            &:last-child {
-                display: block;
-            }
-        }
+
         /deep/ .caption {
             font-size: 20vw;
         }
