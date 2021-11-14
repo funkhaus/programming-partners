@@ -48,8 +48,9 @@
 </template>
 <script>
 
-import _dropRight from "lodash/dropRight"
-import _takeRight from "lodash/takeRight"
+
+
+import _shapeListData from  "~/utils/_shapeListData"
 
 export default {
     name: "List",
@@ -81,8 +82,8 @@ export default {
         },
         preparedList() {
             let tempData = this.items
-            let {right, left} = this.shapeListData(tempData, 3)
-            let trimmed = this.shapeListData(left, 2)
+            let {right, left} = _shapeListData(tempData, 3)
+            let trimmed = _shapeListData(left, 2)
 
             return [
                 {
@@ -124,7 +125,7 @@ export default {
             this.caption = ''
             this.image = null
         },
-        shapeListData(array, offset) {
+        /*shapeListData(array, offset) {
             let count = array.length
             let trimLastCount = Math.floor(count / offset)
             let rightArray = _takeRight(array, trimLastCount)
@@ -134,7 +135,7 @@ export default {
                 left: leftArray,
                 right: rightArray
             }
-        },
+        },*/
     }
 
 }
