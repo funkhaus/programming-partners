@@ -1,9 +1,6 @@
-require("dotenv").config()
 export default {
     target: "static",
-    env: {
-        ...process.env,
-    },
+    components: true,
 
     /*
      ** Headers of the page
@@ -19,8 +16,7 @@ export default {
         link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
         script: [
             {
-                src:
-                    "https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,smoothscroll&flags=gated",
+                src: "https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,smoothscroll&flags=gated",
                 body: true,
             },
         ],
@@ -50,7 +46,7 @@ export default {
         "~/styles/css-variables.scss",
         "~/styles/global.scss",
         "~/styles/transitions.scss",
-        //"~/styles/fonts.css" // Be sure to turn on the font loader plugin and config it
+        "~/styles/fonts.css" // Be sure to turn on the font loader plugin and config it
     ],
 
     /*
@@ -68,7 +64,7 @@ export default {
         { src: "~/plugins/global-directive-loader.js" },
         { src: "~/plugins/google-gtag.client.js", mode: "client" },
         { src: "~plugins/preview.client.js", mode: "client" },
-        //{ src: "~/plugins/web-font-loader.client.js", mode: "client" },
+        { src: "~/plugins/web-font-loader.client.js", mode: "client" },
         //{ src: "~/plugins/ip-geolocate.js" },
     ],
 
@@ -76,6 +72,7 @@ export default {
      ** Nuxt.js modules
      */
     modules: [
+        "~/modules/populate",
         "@nuxtjs/style-resources",
         "@nuxtjs/sitemap",
         // [
@@ -88,23 +85,30 @@ export default {
     ],
 
     /*
+     ** Enable to use ip-geolocate plugin
+     */
+    // publicRuntimeConfig: {
+    //     ipStackKey: process.env.IPSTACK_KEY,
+    // },
+
+    /*
      * Build modules
      */
-    buildModules: [
-        "@nuxtjs/dotenv",
-        "nuxt-graphql-request",
-        "~/modules/sitemap-route-generator",
-    ],
+    buildModules: ["nuxt-graphql-request", "~/modules/sitemap-route-generator"],
 
     /*
      ** GraphQL Request options.
      ** See: https://github.com/Gomah/nuxt-graphql-request
      */
     graphql: {
-        endpoint: process.env.GQL_ENDPOINT,
-        options: {
-            credentials: "include",
-            mode: "cors",
+        clients: {
+            default: {
+                endpoint: process.env.GQL_ENDPOINT,
+                options: {
+                    credentials: "include",
+                    mode: "cors",
+                },
+            },
         },
     },
 
@@ -123,25 +127,15 @@ export default {
     /*
      ** Server side middleware
      */
-    serverMiddleware: ["~/middleware/redirect-trailing-slash.server.js"],
+    serverMiddleware: [
+        { handler: "~/server-middleware/redirect-trailing-slash.js" },
+    ],
 
     /*
      ** Build configuration
      */
     build: {
-        // This and the transpile code below fix an issue with the spread operator in Safari 10.
-        babel: {
-            plugins: ["@babel/plugin-proposal-object-rest-spread"],
-        },
-        transpile: ["ky", "vuex"],
         extend(config, ctx) {
-            // Includes the Compiler version of Vue.
-            // If you don't use the <wp-content> component, then you can delete this safely.
-            config.resolve.alias["vue$"] = "vue/dist/vue.esm.js"
-
-            // This stops a @nuxtjs/dotenv error.
-            config.node = { fs: "empty" }
-
             // Remove SVG from default Nuxt webpack rules
             const svgRule = config.module.rules.find((rule) =>
                 rule.test.test(".svg")
@@ -152,9 +146,29 @@ export default {
             config.resolve.extensions.push(".svg")
             config.module.rules.push({
                 test: /\.svg$/,
-                use: [
-                    "babel-loader",
+                oneOf: [
                     {
+                        // ?raw on import will give raw SVG with no optimizations.
+                        // Good if you need unaltered SVGs for animations.
+                        resourceQuery: /raw/,
+                        use: [
+                            "babel-loader",
+                            {
+                                loader: "vue-svg-loader",
+                                options: {
+                                    svgo: false,
+                                },
+                            },
+                        ],
+                    },
+                    {
+                        // ?url on import will give base64 encode SVG.
+                        // Good for use in CSS.
+                        resourceQuery: /url/,
+                        use: ["url-loader"],
+                    },
+                    {
+                        // Default SVG loader.
                         loader: "vue-svg-loader",
                         options: {
                             svgo: {
@@ -222,6 +236,9 @@ export default {
      */
     storybook: {
         stories: ["~/stories/**/*.stories.js"],
+        parameters: {
+            layout: "fullscreen",
+        },
         webpackFinal(config, { configDir }) {
             // Allow webpack to auto-load .gql and .svg files
             config.resolve.extensions.push(".gql", ".svg")

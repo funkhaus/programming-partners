@@ -143,13 +143,13 @@ export default {
 
 <style lang="scss" scoped>
 // import font at the component level because it doesn't appear to be loaded globally
-@font-face {
-    font-family: 'RM Neue';
-    src: url('../../assets/fonts/RMNeue-Regular.woff2') format('woff2'),
-    url('../../assets/fonts/RMNeue-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+//@font-face {
+//    font-family: 'RM Neue';
+//    src: url('../../assets/fonts/RMNeue-Regular.woff2') format('woff2'),
+//    url('../../assets/fonts/RMNeue-Regular.woff') format('woff');
+//    font-weight: normal;
+//    font-style: normal;
+//}
 
 .gallery-list {
     position: relative;
