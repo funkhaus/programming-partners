@@ -2,7 +2,7 @@
     "name": "fuxt",
     "version": "3.0.0",
     "engines": {
-        "node": "15.4.0"
+        "node": "16.x"
     },
     "description": "A Vue/Nuxt frontend boiler plate optimzed to work with the fuxt-backend WordPress theme.",
     "author": "Funkhaus",
@@ -20,24 +20,24 @@
         "cheerio": "^1.0.0-rc.3",
         "core-js": "^3.6.5",
         "lodash": "^4.17.20",
-        "nuxt": "^2.14.7"
+        "nuxt": "^2.15.8"
     },
     "devDependencies": {
         "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
         "@nuxtjs/dotenv": "^1.4.1",
         "@nuxtjs/sitemap": "^2.4.0",
-        "@nuxtjs/storybook": "^3.2.0",
-        "@nuxtjs/style-resources": "^1.0.0",
+        "@nuxtjs/storybook": "^4.1.1",
+        "@nuxtjs/style-resources": "^1.2.1",
         "eslint": "^7.14.0",
         "eslint-plugin-vue": "^6.2.2",
         "graphql": "^15.4.0",
         "graphql-tag": "^2.11.0",
-        "node-sass": "^4.14.1",
-        "nodemon": "^2.0.6",
+        "node-sass": "^6.0.1",
+        "nodemon": "^2.0.12",
         "nuxt-graphql-request": "^3.1.3",
         "prettier": "^2.2.0",
         "prettier-eslint": "^11.0.0",
-        "sass-loader": "^9.0.3",
+        "sass-loader": "^10.2.0",
         "vue-svg-loader": "^0.16.0",
         "vue-template-compiler": "^2.6.12",
         "webfontloader": "^1.6.28"
