@@ -1,4 +1,3 @@
-import GalleryList from "~/components/gallery/List"
 import { data as API } from "~/stories/mock-api.json"
 
 export default {
@@ -10,9 +9,6 @@ export const Default = () => ({
         return {
             items: API.directors.children.nodes,
         }
-    },
-    components: {
-        GalleryList,
     },
     template: `
         <gallery-list :items="items"/>`,
@@ -94,9 +90,6 @@ export const ListWithErrors = () => ({
                 },
             ],
         }
-    },
-    components: {
-        GalleryList,
     },
     template: `
         <gallery-list :items="items"/>`,
