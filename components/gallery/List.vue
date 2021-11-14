@@ -125,17 +125,6 @@ export default {
             this.caption = ''
             this.image = null
         },
-        /*shapeListData(array, offset) {
-            let count = array.length
-            let trimLastCount = Math.floor(count / offset)
-            let rightArray = _takeRight(array, trimLastCount)
-            let leftArray = _dropRight(array, trimLastCount)
-
-            return {
-                left: leftArray,
-                right: rightArray
-            }
-        },*/
     }
 
 }
