@@ -256,7 +256,7 @@ export default {
         }
 
         /deep/ .caption {
-            font-size: 20vw;
+            font-size: 18vw;
         }
     }
 }
