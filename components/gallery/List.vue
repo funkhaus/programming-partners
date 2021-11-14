@@ -117,12 +117,12 @@ export default {
             this.image = item.featuredImage.node
         },
         mouseOut() {
-            /*this.isVideoLoaded = false
+            this.isVideoLoaded = false
             this.isImageLoaded = false
             this.isVideoError = false
             this.isImageError = false
             this.caption = ''
-            this.image = null*/
+            this.image = null
         },
     }
 
